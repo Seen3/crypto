@@ -4,7 +4,7 @@ void decoder_b64(unsigned char input[], char *str2)
 	unsigned char output[4];
 	output[0]=input[0]<<2|input[1]>>4;
 	output[1]=input[1]<<4|input[2]>>2;
-	output[2]=input[2]<<6|input[3]>>3;
+	output[2]=input[2]<<6|input[3]>>0;
 	output[3]='\0';
 	strncat(str2,output,sizeof(output));
 }
@@ -41,7 +41,8 @@ void encoder_b64(unsigned char inp[],char b64str[],int len)
 	unsigned char out[5];
 	out[0]=b64[inp[0]>>2];
 	out[1]=b64[((inp[0]&0x03)<<4)|((inp[1]&0xf0)>>4)];
-	out[2]=(unsigned char)(len >2?b64[inp[2]&0x3f]:'=');
+	out[2]=(unsigned char)(len>1?b64[((inp[1]&0x0f)<<2)|((inp[2]&0xc0)>>6)]:'=');
+	out[3]=(unsigned char)(len >2?b64[inp[2]&0x3f]:'=');
 	out[4]='\0';
 	strncat(b64str,out,sizeof(out));
 }
