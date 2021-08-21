@@ -198,3 +198,234 @@ void toMorse(char *str)
 		}
 	}
 }
+char MorseChar(char *st)
+{
+	if((strcmp(st,".-")==0))
+	{
+		return 'A';
+	}
+	else if((strcmp(st,"-..."))==0)
+	{
+		return 'B';
+	}
+	else if((strcmp(st,"-.-."))==0)
+	{
+		return 'C';
+	}
+	else if((strcmp(st,"-.."))==0)
+	{
+		return 'D';
+	}
+	else if((strcmp(st,"."))==0)
+	{
+		return 'E';
+	}
+	else if((strcmp(st,"..-."))==0)
+	{
+		return 'F';
+	}
+	else if((strcmp(st,"--."))==0)
+	{
+		return 'G';
+	}
+	else if((strcmp(st,"...."))==0)
+	{
+		return 'H';
+	}
+	else if((strcmp(st,".."))==0)
+	{
+		return 'I';
+	}
+	else if((strcmp(st,".---"))==0)
+	{
+		return 'J';
+	}
+	else if((strcmp(st,"-.-"))==0)
+	{
+		return 'K';
+	}
+	else if((strcmp(st,".-.."))==0)
+	{
+		return 'L';
+	}
+	else if((strcmp(st,"--"))==0)
+	{
+		return 'M';
+	}
+	else if((strcmp(st,"-."))==0)
+	{
+		return 'N';
+	}
+	else if((strcmp(st,"---"))==0)
+	{
+		return 'O';
+	}
+	else if((strcmp(st,".--."))==0)
+	{
+		return 'P';
+	}
+	else if((strcmp(st,"--.-"))==0)
+	{
+		return 'Q';
+	}
+	else if((strcmp(st,".-."))==0)
+	{
+		return 'R';
+	}
+	else if((strcmp(st,"..."))==0)
+	{
+		return 'S';
+	}
+	else if((strcmp(st,"-"))==0)
+	{
+		return 'T';
+	}
+	else if((strcmp(st,"..-"))==0)
+	{
+		return 'U';
+	}
+	else if((strcmp(st,"...-"))==0)
+	{
+		return 'V';
+	}
+	else if((strcmp(st,".--"))==0)
+	{
+		return 'W';
+	}
+	else if((strcmp(st,"-..-"))==0)
+	{
+		return 'X';
+	}
+	else if((strcmp(st,"-.--"))==0)
+	{
+		return 'Y';
+	}
+	else if((strcmp(st,"--.."))==0)
+	{
+		return 'Z';
+	}
+	else if((strcmp(st,"-----"))==0)
+	{
+		return '0';
+	}
+	else if((strcmp(st,".----"))==0)
+	{
+		return '1';
+	}
+	else if((strcmp(st,"..---"))==0)
+	{
+		return '2';
+	}
+	else if((strcmp(st,"...--"))==0)
+	{
+		return '3';
+	}
+	else if((strcmp(st,"....-"))==0)
+	{
+		return '4';
+	}
+	else if((strcmp(st,"....."))==0)
+	{
+		return '5';
+	}
+	else if((strcmp(st,"-...."))==0)
+	{
+		return '6';
+	}
+	else if((strcmp(st,"--..."))==0)
+	{
+		return '7';
+	}
+	else if((strcmp(st,"---.."))==0)
+	{
+		return '8';
+	}
+	else if((strcmp(st,"----."))==0)
+	{
+		return '9';
+	}
+	else if((strcmp(st,".-.-.-"))==0)
+	{
+		return '.';
+	}
+	else if((strcmp(st,"--..--"))==0)
+	{
+		return ',';
+	}
+	else if((strcmp(st,"..--.."))==0)
+	{
+		return '?';
+	}
+	else if((strcmp(st,".----."))==0)
+	{
+		return '\'';
+	}
+	else if((strcmp(st,"-.-.--"))==0)
+	{
+		return '!';
+	}
+	else if((strcmp(st,"-..-."))==0)
+	{
+		return '/';
+	}
+	else if((strcmp(st,"-.--."))==0)
+	{
+		return '(';
+	}
+	else if((strcmp(st,"-.--.-"))==0)
+	{
+		return ')';
+	}
+	else if((strcmp(st,".-..."))==0)
+	{
+		return '&';
+	}
+	else if((strcmp(st,"---.."))==0)
+	{
+		return ':';
+	}
+	else if((strcmp(st,"-.-.-."))==0)
+	{
+		return ';';
+	}
+	else if((strcmp(st,"-...-"))==0)
+	{
+		return '=';
+	}
+	else if((strcmp(st,".-.-."))==0)
+	{
+		return '+';
+	}
+	else if((strcmp(st,"-....-"))==0)
+	{
+		return '-';
+	}
+	else if((strcmp(st,"..--.-"))==0)
+	{
+		return '_';
+	}
+	else if((strcmp(st,".-..-."))==0)
+	{
+		return '"';
+	}
+	else if((strcmp(st,"..-..-"))==0)
+	{
+		return '$';
+	}
+	else if((strcmp(st,".--.-."))==0)
+	{
+		return '@';
+	}
+	return '~';
+}
+void fromMorse(char *str)
+{
+	char *word=strtok(str," ");	
+	while((word!=NULL))
+	{
+		//printf("%s\n",word);
+		printf("%c",MorseChar(word));
+		word=strtok(NULL, " ");
+		//printf("After=%s\n",word);
+	}
+}
