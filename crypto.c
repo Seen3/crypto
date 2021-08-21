@@ -5,6 +5,7 @@
 #include <math.h>
 #include "ciphers.c"
 #include "base64.c"
+#include "morse.c"
 int main(int argc,char **argv)
 {
   srand(time(0));
@@ -55,6 +56,11 @@ int main(int argc,char **argv)
 	  strcpy(s1,argv[2]);
 	  type=6;
   }
+  else if((strcmp(argv[1],"Emorse"))==0)
+  {
+	  strcpy(s1,argv[2]);
+	  type=7;
+  }
 	  
   switch (type) {
     case 1:
@@ -75,6 +81,9 @@ int main(int argc,char **argv)
 	case 6:
 		driver_d(s1);
 		break;
+	case 7:
+		toMorse(s1);
+		break;
     default:
 	printf("\nUsage:crypto <cipher> <text> <additional_info>\n");
     printf("1\trot\tpositive_number\n");
@@ -83,6 +92,7 @@ int main(int argc,char **argv)
     printf("4\trevving\ttext(UPPERCASE ONLY)\tkey\n");
 	printf("5\tb64e\tText\n");
 	printf("6\tb64d\tEncrypted_text\n");
+	printf("7\tEmorse\ttext\n");
     exit(1);
   }
   return 0;
