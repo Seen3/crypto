@@ -1,21 +1,17 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
+#include <math.h>
 #include "ciphers.c"
+#include "base64.c"
 int main(int argc,char **argv)
 {
+  srand(time(0));
   char s1[100],s2[100];
-  int n;
+  int n,d,data;
   int type=0;
-  if (argc!=4)
-  {
-    printf("\nUsage:crypto <cipher> <text> <additional_info>\n");
-    printf("1\trot\tpositive_number\n");
-    printf("2\trevrot\tnegative_number\n");
-    printf("3\tving\ttext(UPPERCASE ONLY)\tkey\n");
-    printf("4\trevving\ttext(UPPERCASE ONLY)\tkey");
-    exit(1);
-  }
+  //printf("%s",argv[1]);
   if ((strcmp(argv[1],"rot"))==0)
   {
     strcpy(s1,argv[2]);
@@ -49,6 +45,17 @@ int main(int argc,char **argv)
     strcpy(s2,argv[3]);
     type=4;
   }
+  else if((strcmp(argv[1],"b64e"))==0)
+  {
+	  strcpy(s1,argv[2]);
+	  type=5;
+  }
+  else if((strcmp(argv[1],"b64d"))==0)
+  {
+	  strcpy(s1,argv[2]);
+	  type=6;
+  }
+	  
   switch (type) {
     case 1:
       rot(s1,n);
@@ -62,8 +69,21 @@ int main(int argc,char **argv)
     case 4:
       ving(s1,s2,1);
       break;
+	 case 5:
+		driver_e(s1);
+		break;
+	case 6:
+		driver_d(s1);
+		break;
     default:
-      printf("\nCase not implemented\n");
+	printf("\nUsage:crypto <cipher> <text> <additional_info>\n");
+    printf("1\trot\tpositive_number\n");
+    printf("2\trevrot\tnegative_number\n");
+    printf("3\tving\ttext(UPPERCASE ONLY)\tkey\n");
+    printf("4\trevving\ttext(UPPERCASE ONLY)\tkey\n");
+	printf("5\tb64e\tText\n");
+	printf("6\tb64d\tEncrypted_text\n");
+    exit(1);
   }
   return 0;
 }
