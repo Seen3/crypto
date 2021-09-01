@@ -3,16 +3,21 @@
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
+#include <ctype.h>
 #include "ciphers.c"
 #include "base64.c"
 #include "morse.c"
+
 int main(int argc,char **argv)
 {
   srand(time(0));
   char s1[100],s2[100];
   int n,d,data;
   int type=0;
-  //printf("%s",argv[1]);
+  if(argc==1)
+  {
+	goto def;	
+  }
   if ((strcmp(argv[1],"rot"))==0)
   {
     strcpy(s1,argv[2]);
@@ -92,7 +97,8 @@ int main(int argc,char **argv)
 	case 8:
 		fromMorse(s1);
 		break;
-    default:
+	default:
+	def:
 	printf("\nUsage:crypto <cipher> <text> <additional_info>\n");
     printf("1\trot\tpositive_number\n");
     printf("2\trevrot\tnegative_number\n");
@@ -101,7 +107,8 @@ int main(int argc,char **argv)
 	printf("5\tb64e\tText\n");
 	printf("6\tb64d\tEncrypted_text\n");
 	printf("7\tEmorse\ttext\n");
-    exit(1);
+	printf("8\tDmorse\ttext\n");
+	exit(1);
   }
   return 0;
 }
